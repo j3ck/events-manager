@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+	<p>Signed in as <em><%= current_user.email %></em></p>
+	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	<% current_user.events.each do |event| %>
+		<%= event.title %>
+	<% end %>
+<% else %>
+	Welcome to Events manager.
+	<%= link_to "Sign in", new_user_session_path %>
+<% end %>
