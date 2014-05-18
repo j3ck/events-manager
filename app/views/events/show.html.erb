@@ -15,5 +15,11 @@
   <%= @event.description %>
 </p>
 
+<%= form_for(current_user.participations.build(event_id: @event.id, user_id: current_user.id) ) do |f| %>
+  <div><%= f.hidden_field :event_id %></div>
+  <div><%= f.hidden_field :user_id %></div>
+  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+<% end %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
