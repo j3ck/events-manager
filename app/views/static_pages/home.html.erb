@@ -4,6 +4,14 @@
 	<% current_user.events.each do |event| %>
 		<%= event.title %>
 	<% end %>
+	<p>
+		<h1>Parts:</h1>
+		<span>
+			<% current_user.participations.each do |part| %>
+				<%= part.event.id %>
+			<% end %>
+		</span>
+	</p>
 <% else %>
 	Welcome to Events manager.
 	<%= link_to "Sign in", new_user_session_path %>
