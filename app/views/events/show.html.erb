@@ -22,6 +22,13 @@
   <% end %>
 </ul>
 
+<strong>Tags:</strong>
+<ul>
+<% @event.tags.each do |tag| %>
+  <li><%= tag.name %></li>
+<% end %>
+</ul>
+
 <% if current_user.participations.find_by_event_id(@event.id) %>
 
 <%= form_for(current_user.participations.find_by_event_id(@event),
