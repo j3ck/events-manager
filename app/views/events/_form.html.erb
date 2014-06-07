@@ -41,6 +41,10 @@
       <%= label_tag dom_id(category), category.name %><br>
     <% end %>
   </div>
+  <div class="field">
+    <%= f.label :tag_tokens, "Tags" %><br />
+    <%= f.text_field :tag_tokens, data: {load: @event.tags} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
