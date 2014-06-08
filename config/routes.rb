@@ -1,4 +1,9 @@
 EventsManager::Application.routes.draw do
+  devise_for :admins
+  namespace :admin do
+    resources :users
+  end
+
   resources :tags
 
   devise_for :users
