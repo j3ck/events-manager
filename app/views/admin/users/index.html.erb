@@ -1,4 +1,4 @@
-<h1>Listing admin_users</h1>
+<h1>Listing users</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @admin_users.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.password %></td>
