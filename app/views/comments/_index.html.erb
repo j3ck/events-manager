@@ -1,2 +1,6 @@
-<%= render :partial => "comments/comment", :collection => current_user.comments.order("created_at ASC"), :as => 'comment' %>
-<%= render "comments/form", :comment => current_user.comments.build(:event_id => @event.id) %>
+<ul class="comments">
+	<%= render :partial => "comments/comment", :collection => current_user.comments.order("created_at ASC"), :as => 'comment' %>
+</ul>
+<div class="to_comment">
+	<%= render "comments/form", :comment => current_user.comments.build(:event_id => @event.id) %>
+</div>
