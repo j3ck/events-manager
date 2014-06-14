@@ -48,3 +48,6 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<%= subscribe_to "/comments/new" %>
+<%= render :partial => "comments/index" %>

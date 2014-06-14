@@ -11,6 +11,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+gem 'thin'
+gem 'private_pub'
+
 group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
