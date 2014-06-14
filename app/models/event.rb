@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
 	has_many :tags, through: :tagships
 	attr_reader :tag_tokens
 
+	has_many :comments
+
 	def tag_tokens=(tokens)
 		self.tag_ids = Tag.ids_from_tokens(tokens)
 	end
