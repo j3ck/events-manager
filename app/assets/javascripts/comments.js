@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $('.new_comment').on('ajax:success', function(e, data, textStatus, xhr) {
-        appendComment(data.create_status, data.form_html, data.comment_html)
-    })
+	PrivatePub.subscribe("/comments/new", function(data, channel) {
+	  appendComment(data.create_status, data.form_html, data.comment_html)
+	})
 })
 
 function appendComment(status, formHTML, commentHTML, book) {
@@ -10,6 +10,6 @@ function appendComment(status, formHTML, commentHTML, book) {
         $(".comments").append(commentDiv)
         commentDiv.hide().fadeIn("slow")
     }
-
-    $('.new_comment').closest('.to_comment').replaceWith(formHTML)
+    /*$('.new_comment').closest('.to_comment').replaceWith(formHTML)*/
+    $('.new_comment').replaceWith(formHTML)
 }

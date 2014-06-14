@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     else
       form_html = render_to_string( :partial => 'comments/form', :formats => [:html], :locals => { :comment => @comment } )
     end
-    render :json => { :create_status => is_create, :form_html => form_html, :comment_html => comment_html }
+    PrivatePub.publish_to "/comments/new", :create_status => is_create, :form_html => form_html, :comment_html => comment_html
   end
 
   # PATCH/PUT /comments/1
