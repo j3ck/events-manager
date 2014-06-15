@@ -53,6 +53,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
+    PrivatePub.publish_to "/comments", :comment => @comment
   end
 
   private
