@@ -12,6 +12,7 @@ EventsManager::Application.routes.draw do
   resources :events
   resources :participations
   resources :categories
+  resources :profiles
 
   root to: "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
