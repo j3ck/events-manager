@@ -1,0 +1,16 @@
+<%= image_tag @profile.avatar.url %>
+<ul>
+	<li>First name: <%= @profile.first_name %></li>
+	<li>Last name: <%= @profile.last_name %></li>
+	<li>Address: <%= @profile.address %></li>
+	<li>Date birth: <%= @profile.date_birth %></li>
+</ul>
+
+<b>Categories:</b>
+<ul>
+  <% @profile.categories.each do |category| %>
+    <li><%= category.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Update your profile", edit_user_registration_path %>

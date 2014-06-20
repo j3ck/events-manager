@@ -1,0 +1,43 @@
+<%= form_for (profile), :html => { :multipart => true } do |f| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited thisprofile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :date_birth %><br>
+    <%= f.date_field :date_birth %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag "profile[category_ids][]", nil %>
+    <% Category.all.each do |category| %>
+      <%= check_box_tag "profile[category_ids][]", category.id, profile.category_ids.include?(category.id), id: dom_id(category) %>
+      <%= label_tag dom_id(category), category.name %><br>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
