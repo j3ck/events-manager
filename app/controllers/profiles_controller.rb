@@ -12,6 +12,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :address, :date_birth)
+    params.require(:profile).permit(:first_name, :last_name, :address, :date_birth, {category_ids: []})
   end
 end
