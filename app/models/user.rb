@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :comments
-
+	has_one  :profile
 	has_many :events
 	has_many :participations
 	has_many :participant_events, through: :participations, source: "event"
