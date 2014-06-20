@@ -1,0 +1,5 @@
+<% publish_to "/comments" do %>
+  $('li[data-id="<%= @comment.id%>"]').fadeOut('slow', function() {
+  	$(this).remove();
+  })
+<% end %>
