@@ -8,9 +8,8 @@
 			<%= current_user.participant_event_ids %>
 		</span>
 	</p>
+	<%= link_to "Profile", profile_path(current_user) %>
 <% else %>
 	Welcome to Events manager.
 	<%= link_to "Sign in", new_user_session_path %>
 <% end %>
-
-<%= link_to "Profile", profile_path(current_user) %>
