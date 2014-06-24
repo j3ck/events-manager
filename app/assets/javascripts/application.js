@@ -15,4 +15,6 @@
 //= require private_pub
 //= require jquery.tokeninput
 //= require turbolinks
+//= require underscore
+//= require gmaps/google
 //= require_tree .

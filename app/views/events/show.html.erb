@@ -15,6 +15,14 @@
   <%= markdown(@event.description) %>
 </p>
 
+<p>
+  <strong>Location place:</strong>
+  <%= @event.place %>
+  <%= @event.latitude %>
+  <%= @event.longitude %>
+</p>
+<%= render 'map', event: @event %>
+
 <b>Categories:</b>
 <ul>
   <% @event.categories.each do |category| %>

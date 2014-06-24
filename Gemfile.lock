@@ -78,6 +78,8 @@ GEM
     faye-websocket (0.7.3)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
+    geocoder (1.2.2)
+    gmaps4rails (2.1.2)
     hike (1.2.3)
     http_parser.rb (0.6.0)
     i18n (0.6.9)
@@ -176,6 +178,8 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   devise
+  geocoder
+  gmaps4rails
   jbuilder (~> 1.2)
   jquery-rails
   meta_request
