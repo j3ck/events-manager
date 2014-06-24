@@ -12,6 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem "paperclip", "~> 4.1"
 
+gem 'geocoder'
+gem 'gmaps4rails'
+
 gem 'thin'
 gem 'private_pub'
 
