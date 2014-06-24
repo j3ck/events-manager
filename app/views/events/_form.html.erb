@@ -31,6 +31,15 @@
     <%= f.label :time %><br>
     <%= f.time_field :time %>
   </div>
+  <div class="place">
+    <span>Location place:</span>
+    <%= f.label :place %>
+    <%= f.text_field :place %>
+    <%= f.label :latitude %>
+    <%= f.text_field :latitude %>
+    <%= f.label :longitude %>
+    <%= f.text_field :longitude %>
+  </div>
   <div class="field">
     <%= f.hidden_field :user_id %>
   </div>

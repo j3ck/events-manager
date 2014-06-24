@@ -1,4 +1,8 @@
 class Event < ActiveRecord::Base
+
+	geocoded_by :place
+	after_validation :geocode
+
 	has_many :participations
 	belongs_to :user
 	has_many :categorizations
