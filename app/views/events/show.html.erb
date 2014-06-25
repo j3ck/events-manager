@@ -37,6 +37,11 @@
 <% end %>
 </ul>
 
+<div class="photos">
+  <h3>Photos:</h3>
+  <%= render 'photos/index' %>
+</div>
+
 <% if current_user.participations.find_by_event_id(@event.id) %>
 
 <%= form_for(current_user.participations.find_by_event_id(@event),

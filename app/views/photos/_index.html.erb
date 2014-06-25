@@ -1,0 +1,4 @@
+<%= render 'photos/add_photo', :photo => @event.photos.build %>
+<div class="photos_cpntainer">
+	<%= render :partial => "photos/photo", :collection => @event.photos.order("created_at ASC"), :as => 'photo' %>
+</div>
