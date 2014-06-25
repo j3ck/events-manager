@@ -12,3 +12,11 @@
  *= require token-input-facebook
  *= require_tree .
  */
+.photo {
+	width: 160px;
+	height: 116px;
+	background-color: #ddd;
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+}
