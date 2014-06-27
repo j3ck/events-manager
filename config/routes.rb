@@ -1,19 +1,20 @@
 EventsManager::Application.routes.draw do
-  resources :comments
 
   devise_for :admins
   namespace :admin do
     resources :users
   end
 
-  resources :tags
-
   devise_for :users
+  resources :comments
+  resources :tags
   resources :events
   resources :participations
   resources :categories
   resources :profiles
-  resources :photos
+  resources :photos do
+    collection { post :sort }
+  end
 
   root to: "static_pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

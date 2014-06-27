@@ -1,6 +1,6 @@
 <%= render 'photos/add_photo', :photo => @event.photos.build %>
 <div class="photos_cpntainer">
-	<div id="photos">
-	<%= render :partial => "photos/photo", :collection => @event.photos.order("created_at ASC"), :as => 'photo' %>
-	</div>
+	<ul id="photos" data-update-url="<%= sort_photos_url %>">
+		<%= render :partial => "photos/photo", :collection => @event.photos.order("position"), :as => 'photo' %>
+	</ul>
 </div>

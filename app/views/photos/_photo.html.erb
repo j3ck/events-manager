@@ -1,4 +1,4 @@
-<div class="photo">
+<%= content_tag_for :li, photo do %>
 	<%= image_tag photo.photo.url(:thumb) %>
 	<%= link_to 'Destroy', photo, method: :delete %>
-</div>
+<% end %>

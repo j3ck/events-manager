@@ -12,6 +12,14 @@ class PhotosController < ApplicationController
 		redirect_to :back
 	end
 
+	def sort
+		params[:photo].each_with_index do |id, index|
+			photo = Photo.find(id)
+			photo.update_attribute(:position, index) if photo
+		end
+		render nothing: true
+	end
+
 private
 
 	def photo_params
