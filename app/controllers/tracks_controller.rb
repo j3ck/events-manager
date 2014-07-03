@@ -4,7 +4,9 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    @tracks = Track.all
+    client = Soundcloud.new(:client_id => '4ec6249c4fd3af29921b135fcb22c51d')
+    @tracks = client.get('/tracks', :q => params[:term])
+    render json: @tracks.map(&:title)
   end
 
   # GET /tracks/1
