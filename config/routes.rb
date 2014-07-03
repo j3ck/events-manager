@@ -1,5 +1,7 @@
 EventsManager::Application.routes.draw do
 
+  resources :tracks
+
   devise_for :admins
   namespace :admin do
     resources :users

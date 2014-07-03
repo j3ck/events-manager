@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
 	has_many :tagships
 	has_many :tags, through: :tagships
 	has_many :comments
+	has_many :tracks
 	attr_reader :tag_tokens
 
 	def tag_tokens=(tokens)
