@@ -12,6 +12,7 @@ gem 'jquery-ui-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem "paperclip", "~> 4.1"
+gem 'soundcloud'
 
 gem 'geocoder'
 gem 'gmaps4rails'
