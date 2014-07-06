@@ -2,11 +2,7 @@
 
 
 <!-- temp block -->
-<%= form_tag tracks_path, method: :get do %>
-  <p>
-    <%= text_field_tag :query, params[:query], data: {autocomplete_source: tracks_path} %>
-  </p>
-<% end %>
+<%= link_to "Tracks", tracks_path %>
 
 <p>
   <strong>Title:</strong>

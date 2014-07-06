@@ -1,6 +1,7 @@
 EventsManager::Application.routes.draw do
 
   resources :tracks
+  get 'search' => 'tracks#search'
 
   devise_for :admins
   namespace :admin do

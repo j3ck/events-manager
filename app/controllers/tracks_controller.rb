@@ -1,12 +1,23 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
 
-  # GET /tracks
-  # GET /tracks.json
-  def index
+  def search
     client = Soundcloud.new(:client_id => '4ec6249c4fd3af29921b135fcb22c51d')
     @tracks = client.get('/tracks', :q => params[:term])
     render json: @tracks.map(&:title)
+  end
+
+  # GET /tracks
+  # GET /tracks.json
+  def index
+      client = Soundcloud.new(:client_id => '4ec6249c4fd3af29921b135fcb22c51d')
+      if params[:query].present?
+        @tracks = client.get('/tracks', :q => params[:query])
+      else
+        @tracks = client.get('/tracks', :limit => 10, :order => 'hotness')
+      end
+      #render json: @tracks.map(&:title)
+      #@tracks = client.get('/tracks', :limit => 10, :order => 'hotness')
   end
 
   # GET /tracks/1
