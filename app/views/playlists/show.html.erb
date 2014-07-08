@@ -7,3 +7,13 @@
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
+
+<div class="search__form">
+  <%= form_tag tracks_path, method: :get do %>
+    <p>
+      <%= text_field_tag :query, params[:query], data: {autocomplete_source: search_path} %>
+    </p>
+  <% end %>
+</div>
+
+<%= render :partial => "tracks/track", :collection => @playlist.tracks.order("created_at ASC"), :as => 'track' %>

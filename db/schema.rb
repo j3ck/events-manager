@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20140708121031) do
 
   create_table "tracks", force: true do |t|
     t.integer  "track_id"
-    t.integer  "event_id"
+    t.integer  "playlist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
