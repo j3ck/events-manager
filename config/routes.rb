@@ -1,5 +1,7 @@
 EventsManager::Application.routes.draw do
 
+  resources :playlists
+
   resources :tracks
   get 'search' => 'tracks#search'
 
