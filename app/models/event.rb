@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
 	geocoded_by :place
 	after_validation :geocode
 
+	has_one :playlist
 	belongs_to :user
 	has_many :participations
 	has_many :categorizations
@@ -16,4 +17,11 @@ class Event < ActiveRecord::Base
 	def tag_tokens=(tokens)
 		self.tag_ids = Tag.ids_from_tokens(tokens)
 	end
+
+	after_create :add_playlist
+
+	private
+		def add_playlist
+			self.build_playlist.save
+		end
 end

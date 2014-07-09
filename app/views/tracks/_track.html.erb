@@ -1,0 +1,15 @@
+<%= track.id %>
+<iframe id="sc-widget" width="100%" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/<%= track.track_id %>&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false"></iframe>
+
+<% unless @playlist.tracks.find_by_track_id(track.track_id) %>
+	<%= form_for(@playlist.tracks.build(:track_id => track.track_id)) do |f| %>
+	  <div><%= f.hidden_field :playlist_id %></div>
+	  <div><%= f.hidden_field :track_id %></div>
+	  <%= f.submit "add to playlist" %>
+	<% end %>
+<% else %>
+	<%= form_for(@playlist.tracks.find_by_track_id(track.track_id),
+	             html: { method: :delete } ) do |f| %>
+	  <%= f.submit "remove form the playlist" %>
+	<% end %>
+<% end %>

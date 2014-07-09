@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626195001) do
+ActiveRecord::Schema.define(version: 20140708121031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,12 @@ ActiveRecord::Schema.define(version: 20140626195001) do
     t.integer  "position"
   end
 
+  create_table "playlists", force: true do |t|
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", force: true do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -126,6 +132,13 @@ ActiveRecord::Schema.define(version: 20140626195001) do
 
   add_index "tagships", ["event_id"], name: "index_tagships_on_event_id", using: :btree
   add_index "tagships", ["tag_id"], name: "index_tagships_on_tag_id", using: :btree
+
+  create_table "tracks", force: true do |t|
+    t.integer  "track_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
