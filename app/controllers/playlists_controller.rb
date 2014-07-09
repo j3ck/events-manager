@@ -10,6 +10,16 @@ class PlaylistsController < ApplicationController
   # GET /playlists/1
   # GET /playlists/1.json
   def show
+    client = Soundcloud.new(:client_id => '4ec6249c4fd3af29921b135fcb22c51d')
+    if params[:query].present?
+      @tracks = client.get('/tracks', :q => params[:query])
+      # in alone def
+      @tracks = @tracks.each do |track|
+        track.track_id = track.id
+      end
+    else
+      @tracks = @playlist.tracks
+    end
   end
 
   # GET /playlists/new
