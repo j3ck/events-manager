@@ -10,14 +10,7 @@ class TracksController < ApplicationController
   # GET /tracks
   # GET /tracks.json
   def index
-    client = Soundcloud.new(:client_id => '4ec6249c4fd3af29921b135fcb22c51d')
-    if params[:query].present?
-      @tracks = client.get('/tracks', :q => params[:query])
-    else
-      @tracks = Track.all
-    end
-    #render json: @tracks.map(&:title)
-    #@tracks = client.get('/tracks', :limit => 10, :order => 'hotness')
+    @tracks = Track.all
   end
 
   # GET /tracks/1
