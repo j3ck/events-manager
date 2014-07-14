@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @playlist.event_id %>
+</p>
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Back', playlists_path %>
+
+<div class="search__form">
+  <%= form_tag playlist_path(@playlist), method: :get do %>
+    <p>
+      <%= text_field_tag :query, params[:query], data: {autocomplete_source: search_path} %>
+    </p>
+  <% end %>
+</div>
+
+<%= render :partial => "tracks/track", :collection => @tracks, :as => 'track' %>

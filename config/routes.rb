@@ -13,7 +13,9 @@ EventsManager::Application.routes.draw do
   devise_for :users
   resources :comments
   resources :tags
-  resources :events
+  resources :events do
+    get 'playlist' => 'events#playlist'
+  end
   resources :participations
   resources :categories
   resources :profiles

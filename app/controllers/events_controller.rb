@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  def playlist
+    @event = Event.find(params[:event_id])
+    @playlist = @event.playlist
+  end
+
   # GET /events
   # GET /events.json
   def index
