@@ -10,11 +10,6 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @event.status %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= markdown(@event.description) %>
 </p>
@@ -46,21 +41,32 @@
   <%= render 'photos/index' %>
 </div>
 
-<% if current_user.participations.find_by_event_id(@event.id) %>
+<% if @event.status %>
 
-<%= form_for(current_user.participations.find_by_event_id(@event),
-             html: { method: :delete } ) do |f| %>
-  <%= f.submit "Unfollow", class: "btn btn-large" %>
-<% end %>
+  <%= form_for(@event) do |f| %>
+    <%= f.hidden_field :status, value: false %>
 
+    <%= f.submit "Complete event" %>
+  <% end %>
+
+  <% if current_user.participations.find_by_event_id(@event.id) %>
+
+  <%= form_for(current_user.participations.find_by_event_id(@event),
+               html: { method: :delete } ) do |f| %>
+    <%= f.submit "Unfollow", class: "btn btn-large" %>
+  <% end %>
+
+  <% else %>
+
+  <%= form_for(current_user.participations.build(event_id: @event.id, user_id: current_user.id) ) do |f| %>
+    <div><%= f.hidden_field :event_id %></div>
+    <div><%= f.hidden_field :user_id %></div>
+    <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
+  <% end %>
+
+  <% end %>
 <% else %>
-
-<%= form_for(current_user.participations.build(event_id: @event.id, user_id: current_user.id) ) do |f| %>
-  <div><%= f.hidden_field :event_id %></div>
-  <div><%= f.hidden_field :user_id %></div>
-  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-<% end %>
-
+  <strong>event ended</strong>
 <% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
