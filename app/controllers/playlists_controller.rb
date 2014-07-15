@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :right_participant
 
   # GET /playlists
   # GET /playlists.json
@@ -80,5 +81,12 @@ class PlaylistsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def playlist_params
       params.require(:playlist).permit(:event_id)
+    end
+
+    def right_participant
+      set_playlist
+      unless current_user.participations.find_by_event_id(@playlist.event_id) || current_user.events.find_by_id(@playlist.event_id)
+        redirect_to root_path
+      end
     end
 end
