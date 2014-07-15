@@ -27,14 +27,10 @@
   </div>
   <% if @event.status %>
     <div class="field">
-      <%= f.label :date %><br>
-      <%= f.date_field :date %>
+      <%= f.label :time %><br>
+      <%= f.datetime_select :time %>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.time_field :time %>
-  </div>
   <div class="place">
     <span>Location place:</span>
     <%= f.label :place %>
