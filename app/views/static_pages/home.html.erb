@@ -13,3 +13,17 @@
 	Welcome to Events manager.
 	<%= link_to "Sign in", new_user_session_path %>
 <% end %>
+
+<div>
+	<h3>Events</h3>
+	<% @events.each do |event| %>
+		<%= event.title %>
+	<% end -%>
+</div>
+
+<div>
+	<h3>Top users:</h3>
+	<% @top_users.each do |user| %>
+		User: <%= user[0].email %> Events: <%= user[1] %> <br>
+	<% end -%>
+</div>
