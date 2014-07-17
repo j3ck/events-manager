@@ -17,7 +17,7 @@ test:
   pool: 5
   timeout: 5000
   username: event_manager
-  password:
+  password: event
 
 production:
   adapter: postgresql
@@ -25,4 +25,4 @@ production:
   pool: 5
   timeout: 5000
   username: event_manager
-  password:
+  password: event

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	has_many :participant_events, through: :participations, source: "event"
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable#, :confirmable
 
   after_create :add_profile
 
