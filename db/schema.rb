@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20140715091708) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "time"
     t.string   "place"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "status",      default: true
-    t.datetime "time"
   end
 
   create_table "participations", force: true do |t|
