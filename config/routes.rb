@@ -1,5 +1,5 @@
 EventsManager::Application.routes.draw do
-
+  get 'tags/:tag', to: 'events#index', as: :tag
   resources :playlists
 
   resources :tracks
