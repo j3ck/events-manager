@@ -3,6 +3,12 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :right_owner, only: [:edit, :update, :destroy]
 
+  def search
+    if params[:q]
+      @results = Event.search(params[:q])
+    end
+  end
+
   def playlist
     @event = Event.find(params[:event_id])
     @playlist = @event.playlist

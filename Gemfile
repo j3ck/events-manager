@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem "paperclip", "~> 4.1"
 gem 'soundcloud'
+gem 'searchkick'
 
 gem 'geocoder'
 gem 'gmaps4rails'

@@ -1,0 +1,8 @@
+<h1>Search results</h1>
+
+<% @results.each do |result| %>
+	<%= link_to result.title, event_path(result) %>
+<% end %>
+
+<br>
+<%= link_to "All events", events_path %>
