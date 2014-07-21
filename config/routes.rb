@@ -3,7 +3,8 @@ EventsManager::Application.routes.draw do
   resources :playlists
 
   resources :tracks
-  get 'search' => 'tracks#search'
+  get 'search' => 'events#search'
+  get 'search_t' => 'tracks#search'
 
   devise_for :admins
   namespace :admin do
