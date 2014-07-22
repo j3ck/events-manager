@@ -8,10 +8,13 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ * Bootswatch
  *= require_self
+ *= require amelia/loader
+ *= require amelia/bootswatch
  *= require jquery.ui.all
  *= require token-input-facebook
- *= require_tree .
+ *
  */
 .photo {
 	width: 160px;
