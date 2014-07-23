@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EventsManager</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<title>EventsManager</title>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-	<%= render 'layouts/search' %>
+	<%= render 'layouts/navbar' %>
+		<%= render 'layouts/search' %>
+		<div id="tag_cloud">
+			<% tag_cloud Event.tag_counts, %w[s m l] do |tag, css_class| %>
+				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+			<% end %>
+		</div>
 
-	<div id="tag_cloud">
-	  <% tag_cloud Event.tag_counts, %w[s m l] do |tag, css_class| %>
-	    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-	  <% end %>
-	</div>
-
-<%= yield %>
+		<%= yield %>
 
 </body>
 </html>
