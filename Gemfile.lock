@@ -140,6 +140,8 @@ GEM
     polyglot (0.3.5)
     private_pub (1.0.3)
       faye
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
@@ -234,6 +236,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   pg
   private_pub
+  quiet_assets
   rails (= 4.0.2)
   redcarpet
   sass-rails (~> 4.0.0)
