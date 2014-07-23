@@ -26,3 +26,35 @@
 }
 
 body { padding-top: 70px; }
+
+.bg {
+	-webkit-filter: grayscale(0.3) invert(0.3) blur(0.5px);
+	-0-filter: grayscale(0.3) invert(0.3) blur(0.5px);
+	-mox-filter: grayscale(0.3) invert(0.3) blur(0.5px);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	min-height: 100%;
+	min-width: 1024px;
+	width: 100%;
+	height: auto;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.page-header {
+	border-bottom: none !important;
+	padding: 50px;
+}
+
+.page-header h1 {
+	font-size: 4em;
+}
+
+.git-icon {
+	width: 20px;
+	height: 20px;
+}
