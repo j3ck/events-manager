@@ -25,7 +25,7 @@
 	margin: 5px;
 }
 
-body { padding-top: 70px; }
+body { padding-top: 70px; padding-bottom: 70px; }
 
 .bg {
 	-webkit-filter: grayscale(0.3) invert(0.3) blur(0.5px);
@@ -57,4 +57,14 @@ body { padding-top: 70px; }
 .git-icon {
 	width: 20px;
 	height: 20px;
+}
+
+.footer .navbar-default {
+	background-color: #494747;
+	border-color: #000;
+	opacity: 0.7;
+}
+
+.footer .list-inline {
+	padding-top: 16px;
 }
