@@ -14,7 +14,7 @@
  *= require amelia/bootswatch
  *= require jquery.ui.all
  *= require token-input-facebook
- *
+ *= require_tree .
  */
 .photo {
 	width: 160px;
