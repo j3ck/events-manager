@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     if params[:tag]
       @events = Event.tagged_with(params[:tag])
     else
-      @events = Event.all
+      @events = Event.order("created_at ASC")
     end
   end
 

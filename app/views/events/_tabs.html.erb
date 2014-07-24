@@ -1,0 +1,29 @@
+<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+  <li class="active"><a href="#allevents" data-toggle="tab">All events</a></li>
+  <% if user_signed_in? %>
+    <li><a href="#myevents" data-toggle="tab">My events</a></li>
+    <li><a href="#control" data-toggle="tab">Control</a></li>
+  <% end %>
+  <li class="pull-right"><%= link_to 'Add event', new_event_path %></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="allevents">
+    <%= render @events %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="tab-pane fade" id="myevents">
+      <% if current_user.participant_events.empty? %>
+        <h4 class="text-info">Unfortunately here empty...</h4>
+      <% else %>
+        <%= render :partial => "events/event", :collection => current_user.participant_events, :as => 'event' %>
+      <% end %>
+    </div>
+    <div class="tab-pane fade" id="control">
+      <% if current_user.events.empty? %>
+        <h4 class="text-info">Unfortunately here empty...</h4>
+      <% else %>
+        <%= render :partial => "events/event", :collection => current_user.events, :as => 'event' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
