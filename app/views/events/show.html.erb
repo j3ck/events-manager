@@ -4,41 +4,47 @@
 <!-- temp block -->
 <%= link_to "Playlist", playlist_path(@event.playlist.id) %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= markdown(@event.description) %>
-</p>
-
-<p>
-  <strong>Location place:</strong>
-  <%= @event.place %>
-  <%= @event.latitude %>
-  <%= @event.longitude %>
-</p>
-<%= render 'map', event: @event %>
-
-<b>Categories:</b>
-<ul>
-  <% @event.categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</ul>
-
-<strong>Tags:</strong>
-<ul>
-<% @event.tags.each do |tag| %>
-  <li><%= tag.name %></li>
-<% end %>
-</ul>
-
-<div class="photos">
-  <h3>Photos:</h3>
-  <%= render 'photos/index' %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="page-header">
+      <h3><%= @event.title %></h3>
+    </div>
+    <dl class="dl-horizontal">
+      <dt>Description</dt>
+      <dd><%= markdown(@event.description) %></dd>
+      <dt>Categories</dt>
+      <dd>
+        <ul class="list-inline">
+          <% @event.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </ul>
+      </dd>
+      <dt>Tags</dt>
+      <dd>
+        <ul class="list-inline">
+          <% @event.tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </ul>
+      </dd>
+      <dt>Time</dt>
+      <dd><%= @event.time %></dd>
+      <dt>Location</dt>
+      <dd>
+        <%= @event.place %>
+        <%= @event.latitude %>
+        <%= @event.longitude %>
+        <a id="showmap">Show on map</a>
+        <div class="map">
+          <%= render 'map', event: @event %>
+        </div>
+      </dd>
+    </dl>
+    <h3>Photos</h3>
+    <%= render 'photos/index' %>
+  </div>
 </div>
 
 <% if @event.status %>
