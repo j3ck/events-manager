@@ -1,0 +1,5 @@
+<%= form_for(current_user.participations.build(event_id: @event.id, user_id: current_user.id) ) do |f| %>
+  <%= f.hidden_field :event_id %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit "Follow", class: "btn btn-primary btn-sm" %>
+<% end %>

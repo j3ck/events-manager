@@ -1,0 +1,4 @@
+<%= form_for(@event) do |f| %>
+  <%= f.hidden_field :status, value: false %>
+  <%= f.submit "Complete event", class:"btn btn-default btn-sm" %>
+<% end %>
