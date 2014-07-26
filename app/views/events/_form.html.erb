@@ -1,60 +1,86 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div class="col-lg-6">
+  <div class="well bs-component">
+    <%= form_for (@event), html: { class:"form-horizontal" } do |f| %>
+      <% if @event.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <!-- will be removed -->
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <!-- end -->
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <% if @event.status %>
-    <div class="field">
-      <%= f.label :time %><br>
-      <%= f.datetime_select :time %>
-    </div>
-  <% end %>
-  <div class="place">
-    <span>Location place:</span>
-    <%= f.label :place %>
-    <%= f.text_field :place %>
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id %>
-  </div>
-  <div class="field">
-    <%= hidden_field_tag "event[category_ids][]", nil %>
-    <% Category.all.each do |category| %>
-      <%= check_box_tag "event[category_ids][]", category.id, @event.category_ids.include?(category.id), id: dom_id(category) %>
-      <%= label_tag dom_id(category), category.name %><br>
+      <fieldset>
+      <div class="form-group">
+        <%= f.label :title, class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_field :title, class:"form-control" %>
+        </div>
+      </div>
+      <!-- will be removed -->
+      <div class="form-group">
+        <%= f.label :status, class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.check_box :status, class:"form-control" %>
+        </div>
+      </div>
+      <!-- end -->
+      <div class="form-group">
+        <%= f.label :description, class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_area :description, class:"form-control", rows:"3" %>
+        </div>
+      </div>
+      <% if @event.status %>
+        <div class="form-group">
+          <%= f.label :time, class:"col-lg-2 control-label" %>
+          <div class="col-lg-10">
+            <%= f.datetime_select :time, class:"form-control" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :place, "Location place", class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_field :place, class:"form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :latitude, class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_field :latitude, class:"form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :longitude, class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_field :longitude, class:"form-control" %>
+        </div>
+      </div>
+        <%= f.hidden_field :user_id %>
+      <div class="form-group">
+        <%= f.label :categories, class:"col-lg-2 control-label" %>
+        <%= hidden_field_tag "event[category_ids][]", nil %>
+        <% Category.all.each do |category| %>
+            <%= check_box_tag "event[category_ids][]", category.id, @event.category_ids.include?(category.id), id: dom_id(category) %>
+            <%= label_tag dom_id(category), category.name %>
+        <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.label :tag_tokens, "Tags", class:"col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_field :tag_tokens, data: {load: @event.tags} %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <%= f.submit class:"btn btn-primary" %>
+        </div>
+      </div>
+      </fieldset>
     <% end %>
   </div>
-  <div class="field">
-    <%= f.label :tag_tokens, "Tags" %><br />
-    <%= f.text_field :tag_tokens, data: {load: @event.tags} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
