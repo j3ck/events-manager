@@ -1,16 +1,21 @@
-<%= image_tag @profile.avatar.url %>
-<ul>
-	<li>First name: <%= @profile.first_name %></li>
-	<li>Last name: <%= @profile.last_name %></li>
-	<li>Address: <%= @profile.address %></li>
-	<li>Date birth: <%= @profile.date_birth %></li>
-</ul>
-
-<b>Categories:</b>
-<ul>
-  <% @profile.categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</ul>
-
-<%= link_to "Update your profile", edit_user_registration_path %>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="well profile">
+			<%= image_tag @profile.avatar.url, width:"150" %>
+			<div class="profile-info">
+				<p><strong class="text-primary">Name: </strong><%= @profile.first_name %> <%= @profile.last_name %></p>
+				<p><strong class="text-primary">Address: </strong><%= @profile.address %></p>
+				<p><strong class="text-primary">Date birth: </strong><%= @profile.date_birth %></p>
+				<p>
+					<strong class="text-primary">Categories: </strong>
+					<% @profile.categories.each do |category| %>
+						<%= category.name %>
+					<% end %>
+				</p>
+			</div>
+			<% if current_user.id == @profile.user.id %>
+				<p><%= link_to "Update your profile", edit_user_registration_path %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
