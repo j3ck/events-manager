@@ -1,77 +1,107 @@
 <p id="notice"><%= notice %></p>
 
+<div class="panel panel-default">
+  <div class="panel-body event-title">
+    <div class="page-header">
+      <h2>
+        <%= @event.title %>
+        <% if @event.status %>
+          <ul class="list-inline pull-right">
+            <li><%= link_to 'Edit', edit_event_path(@event), class:"btn btn-default btn-sm" %></li>
+            <li><%= render "shared/complete_event" %></li>
 
-<!-- temp block -->
-<%= link_to "Playlist", playlist_path(@event.playlist.id) %>
+            <% if current_user.participations.find_by_event_id(@event.id) %>
+              <li><%= render "shared/unfollow" %></li>
+           <% else %>
+              <li><%= render "shared/follow" %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h3 class="text-success">Event closed.</h3>
+        <% end %>
+      </h2>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+    <dl class="dl-horizontal">
+      <dt class="text-warning">Description</dt>
+      <dd><%= markdown(@event.description) %></dd>
+      <dt class="text-warning">Categories</dt>
+      <dd>
+        <ul class="list-inline">
+          <% @event.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </ul>
+      </dd>
+      <dt class="text-warning">Tags</dt>
+      <dd>
+        <ul class="list-inline">
+          <% @event.tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </ul>
+      </dd>
+      <dt class="text-warning">Time</dt>
+      <dd><%= @event.time %></dd>
+      <dt class="text-warning">Location</dt>
+      <dd>
+        <%= @event.place %>
+        <%= @event.latitude %>
+        <%= @event.longitude %>
+        <a id="showmap">Show on map</a>
+        <div class="map">
+          <%= render 'map', event: @event %>
+        </div>
+      </dd>
+    </dl>
 
-<p>
-  <strong>Description:</strong>
-  <%= markdown(@event.description) %>
-</p>
-
-<p>
-  <strong>Location place:</strong>
-  <%= @event.place %>
-  <%= @event.latitude %>
-  <%= @event.longitude %>
-</p>
-<%= render 'map', event: @event %>
-
-<b>Categories:</b>
-<ul>
-  <% @event.categories.each do |category| %>
-    <li><%= category.name %></li>
-  <% end %>
-</ul>
-
-<strong>Tags:</strong>
-<ul>
-<% @event.tags.each do |tag| %>
-  <li><%= tag.name %></li>
-<% end %>
-</ul>
-
-<div class="photos">
-  <h3>Photos:</h3>
-  <%= render 'photos/index' %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Photos <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#addPhoto">Add photo</button></h3>
+      </div>
+      <div class="modal fade" id="addPhoto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Add photo</h4>
+            </div>
+            <div class="modal-body">
+              <%= form_for (@event.photos.build), :html => { :multipart => true } do |f| %>
+                <div class="field">
+                  <%= f.file_field :photo %>
+                </div>
+                <div class="field">
+                  <%= f.hidden_field :event_id %>
+                </div>
+                <div class="actions">
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit class:"btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="photos_cpntainer">
+          <ul id="photos" data-update-url="<%= sort_photos_url %>">
+            <%= render :partial => "photos/photo", :collection => @event.photos.order("position"), :as => 'photo' %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <h3>Playlist</h3>
+      <!-- temp block -->
+      <%= link_to "Playlist", playlist_path(@event.playlist.id) %>
+    </div>
+    <h4>Comments: <%= @event.comments.count %></h4>
+    <%= subscribe_to "/comments/new" %>
+    <%= subscribe_to "/comments" %>
+    <%= render :partial => "comments/index" %>
+  </div>
 </div>
-
-<% if @event.status %>
-
-  <%= form_for(@event) do |f| %>
-    <%= f.hidden_field :status, value: false %>
-
-    <%= f.submit "Complete event" %>
-  <% end %>
-
-  <% if current_user.participations.find_by_event_id(@event.id) %>
-
-  <%= form_for(current_user.participations.find_by_event_id(@event),
-               html: { method: :delete } ) do |f| %>
-    <%= f.submit "Unfollow", class: "btn btn-large" %>
-  <% end %>
-
-  <% else %>
-
-  <%= form_for(current_user.participations.build(event_id: @event.id, user_id: current_user.id) ) do |f| %>
-    <div><%= f.hidden_field :event_id %></div>
-    <div><%= f.hidden_field :user_id %></div>
-    <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-  <% end %>
-
-  <% end %>
-<% else %>
-  <strong>event ended</strong>
-<% end %>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-
-<%= subscribe_to "/comments/new" %>
-<%= subscribe_to "/comments" %>
-<%= render :partial => "comments/index" %>

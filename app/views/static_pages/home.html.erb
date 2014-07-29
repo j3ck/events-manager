@@ -1,29 +1,60 @@
 <% if user_signed_in? %>
-	<p>Signed in as <em><%= current_user.email %></em></p>
-	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-	<%= current_user.event_ids %>
-	<p>
-		<h1>Parts:</h1>
-		<span>
-			<%= current_user.participant_event_ids %>
-		</span>
-	</p>
-	<%= link_to "Profile", profile_path(current_user) %>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">Forthcoming events:</div>
+				<div class="panel-body">
+
+					<% @events.each do |event| %>
+						<div class="media">
+						  <a class="pull-left" href="<%= event_path(event) %>">
+						    <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" alt="..." width="100">
+						  </a>
+						  <div class="media-body">
+						  	<div class="media-heading">
+						  		<h4><%= link_to event.title, event %></h4>
+						    	<p><span class="glyphicon glyphicon-calendar"></span> <%= event.time %></p>
+						    	<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.place %></p>
+						  	</div>
+						  </div>
+						</div>
+						<p><span>Followers:</span> <%#= number_of_participants(event) %></p>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">Top users:</div>
+				<div class="panel-body">
+					<% @top_users.each do |user| %>
+					<div class="media">
+						<a class="pull-left" href="#">
+							<%= image_tag(user[0].profile.avatar.url, class:"media-object", width:"100") %>
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading"><%= user[0].profile.first_name %> <%= user[0].profile.last_name %></h4>
+								<p>events count: <%= user[1] %></p>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 <% else %>
-	Welcome to Events manager.
-	<%= link_to "Sign in", new_user_session_path %>
+	<%= image_tag("352745.jpg", :class => "bg") %>
+	<div class="home">
+		<div class="page-header pull-right">
+			<h1>The Events manager.</h1>
+			<p>
+				This is a simple <span class="text-primary">"Ruby on Rails"</span> project. To upgrade a full stack of skills.
+			</p>
+			<p>
+				<%= link_to "Learn more", 'about page', class:"btn btn-default" %>
+				<%= link_to "Sign up", new_user_registration_path, class:"btn btn-default" %>
+			</p>
+		</div>
+	</div>
 <% end %>
-
-<div>
-	<h3>Events</h3>
-	<% @events.each do |event| %>
-		<%= event.title %>
-	<% end -%>
-</div>
-
-<div>
-	<h3>Top users:</h3>
-	<% @top_users.each do |user| %>
-		User: <%= user[0].email %> Events: <%= user[1] %> <br>
-	<% end -%>
-</div>

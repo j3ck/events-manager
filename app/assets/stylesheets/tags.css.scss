@@ -1,3 +1,23 @@
-// Place all the styles related to the tags controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.tags, .categories {
+	display: inline-block;
+	a {
+		text-decoration: none;
+	}
+}
+.tag, .category {
+	display: inline-block;
+	padding: 25px 20px;
+	margin-left: 10px;
+	background: #644;
+	border: 2px solid #057 ;
+
+	.tag-header, .category-header {
+		font-size: 20px;
+	}
+}
+
+.tag:hover, .category:hover {
+	background: #544;
+	border: 2px solid #355;
+	cursor: pointer;
+}

@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'twitter-bootswatch-rails', '~> 3.2.0'
+gem 'twitter-bootswatch-rails-helpers'
+gem 'therubyracer'
+
 gem 'rails', '4.0.2'
 gem 'pg'
 gem "redcarpet"
@@ -25,6 +29,7 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'meta_request'
+	gem 'quiet_assets'
 end
 
 group :doc do

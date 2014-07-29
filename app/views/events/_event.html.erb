@@ -1,0 +1,25 @@
+<div class="media">
+	<h3><%= link_to event.title, event %></h3>
+  <a class="pull-left" href="<%= event_path(event) %>">
+    <img class="media-object" src="..." alt="..." width="300">
+  </a>
+  <div class="media-body">
+  	<div class="media-heading">
+    	<p>
+    		<span class="glyphicon glyphicon-calendar"></span>
+    		<%= event.time %>
+    		<% if event.status? %>
+					<span class="text-success glyphicon glyphicon-ok">Active</span>
+    		<% else %>
+					<span class="text-primary glyphicon glyphicon-remove">Сompleted</span>
+				<% end %>
+    	</p>
+    	<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.place %> <span class="text-primary">N:</span> <%= event.latitude %> 
+<span class="text-primary">E:</span> <%= event.longitude %></p>
+			<hr>
+  	</div>
+    <p class="event-info">
+    	<%= event.description %>
+    </p>
+  </div>
+</div>

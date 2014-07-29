@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
     is_create = @comment.save
     if is_create
       comment_html = render_to_string( :partial => 'comments/comment', :formats => [:html], :locals => { :comment => @comment } )
-      form_html = render_to_string( :partial => 'comments/form', :formats => [:html], :locals => { :comment => current_user.comments.build } )
+      form_html = render_to_string( :partial => 'comments/form', :formats => [:html], :locals => { :comment => current_user.comments.build(:event_id => @comment.event.id) } )
     else
       form_html = render_to_string( :partial => 'comments/form', :formats => [:html], :locals => { :comment => @comment } )
     end

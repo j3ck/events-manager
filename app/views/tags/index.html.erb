@@ -1,27 +1,18 @@
-<h1>Listing tags</h1>
+<h1>Tags</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<!-- pagination soon -->
+<!-- end -->
 
-  <tbody>
     <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="tags">
+      <a href="<%= tag_path(tag.name) %>">
+        <div class="tag">
+          <p class="tag-header"><span class="glyphicon glyphicon-tag"></span> <%= tag.name %></p>
+          <p><span>Events #</span> <%= tag.events.count %></p>
+        </div>
+      </a>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Tag', new_tag_path %>
+<!-- pagination soon -->
+<!-- end -->
