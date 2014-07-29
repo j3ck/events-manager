@@ -31,7 +31,7 @@
 					<% @top_users.each do |user| %>
 					<div class="media">
 						<a class="pull-left" href="#">
-							<%= image_tag(user[0].profile.avatar.url, class:"media-object") %>
+							<%= image_tag(user[0].profile.avatar.url, class:"media-object", width:"100") %>
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading"><%= user[0].profile.first_name %> <%= user[0].profile.last_name %></h4>
