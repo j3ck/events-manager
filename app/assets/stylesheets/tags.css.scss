@@ -1,22 +1,22 @@
-.tags {
+.tags, .categories {
 	display: inline-block;
 	a {
 		text-decoration: none;
 	}
 }
-.tag {
+.tag, .category {
 	display: inline-block;
 	padding: 25px 20px;
 	margin-left: 10px;
 	background: #644;
 	border: 2px solid #057 ;
 
-	.tag-header {
+	.tag-header, .category-header {
 		font-size: 20px;
 	}
 }
 
-.tag:hover {
+.tag:hover, .category:hover {
 	background: #544;
 	border: 2px solid #355;
 	cursor: pointer;
