@@ -10,6 +10,10 @@
 
 	<%= render 'layouts/navbar' %>
 
+	<div class="container">
+		<%= yield %>
+	</div>
+
 	<% if user_signed_in? %>
 		<%= render 'layouts/footer' %>
 	<% else %>
