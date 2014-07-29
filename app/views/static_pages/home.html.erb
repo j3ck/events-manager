@@ -4,12 +4,23 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">Forthcoming events:</div>
 				<div class="panel-body">
+
 					<% @events.each do |event| %>
-						<ul class="list-unstyled">
-							<li><%= link_to(event.title, event) %></li>
-							<li><%#= number_of_participants(event) %></li>
-						</ul>
+						<div class="media">
+						  <a class="pull-left" href="<%= event_path(event) %>">
+						    <img class="media-object" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" alt="..." width="100">
+						  </a>
+						  <div class="media-body">
+						  	<div class="media-heading">
+						  		<h4><%= link_to event.title, event %></h4>
+						    	<p><span class="glyphicon glyphicon-calendar"></span> <%= event.time %></p>
+						    	<p><span class="glyphicon glyphicon-map-marker"></span> <%= event.place %></p>
+						  	</div>
+						  </div>
+						</div>
+						<p><span>Followers:</span> <%#= number_of_participants(event) %></p>
 					<% end %>
+
 				</div>
 			</div>
 		</div>
