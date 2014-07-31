@@ -6,3 +6,6 @@ jQuery ->
   $('.map').hide()
 
   $('#showmap').on('click', () -> $('.map').toggle())
+
+  $('#datetimepicker').datetimepicker
+  	format:'Y-m-d H:i'

@@ -16,6 +16,7 @@
 //= require amelia/loader
 //= require amelia/bootswatch
 //
+//= require jquery.datetimepicker
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require private_pub
