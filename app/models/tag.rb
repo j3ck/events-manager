@@ -1,4 +1,6 @@
 class Tag < ActiveRecord::Base
+	searchkick
+
 	has_many :tagships
 	has_many :events, through: :tagships
 
