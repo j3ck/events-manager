@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   end
 
   def crp
+    @profile = Profile.find(params[:profile_id])
     render "crop"
   end
 

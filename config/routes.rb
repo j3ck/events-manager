@@ -19,7 +19,9 @@ EventsManager::Application.routes.draw do
   end
   resources :participations
   resources :categories
-  resources :profiles
+  resources :profiles do
+    get 'crp' => 'profiles#crp'
+  end
   resources :photos do
     collection { post :sort }
   end

@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="well profile">
-			<%= link_to "Crop", profile_path(@profile), :method => "crp" %>
+			<%= link_to "Crop", profile_crp_path(@profile.id) %>
 			<%= image_tag @profile.avatar.url(:small) %>
 			<div class="profile-info">
 				<p><strong class="text-primary">Name: </strong><%= @profile.first_name %> <%= @profile.last_name %></p>
