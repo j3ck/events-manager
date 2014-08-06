@@ -3,15 +3,27 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def crp
+    render "crop"
+  end
+
   def update
     @profile = Profile.find(params[:id])
     @profile.update(profile_params)
-    redirect_to root_url
+      if params[:profile][:avatar].blank?
+        if @profile.cropping?
+          @profile.avatar.reprocess!
+        end
+        redirect_to @profile
+      else
+        render :action => "crop"
+      end
+    #redirect_to root_url
   end
 
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :address, :date_birth, {category_ids: []}, :avatar)
+    params.require(:profile).permit(:first_name, :last_name, :address, :date_birth, {category_ids: []}, :avatar, :crop_x, :crop_y, :crop_w, :crop_h)
   end
 end
