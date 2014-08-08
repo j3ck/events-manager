@@ -5,7 +5,11 @@ class ProfilesController < ApplicationController
 
   def crp
     @profile = Profile.find(params[:profile_id])
-    render "crop"
+    if signed_in? && current_user.id == @profile.id && current_user.profile.avatar_file_name?
+      render "crop"
+    else
+      redirect_to root_url
+    end
   end
 
   def update
