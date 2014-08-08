@@ -1,9 +1,11 @@
+<h4>Crop avatar</h4>
+
 <%= image_tag @profile.avatar.url(:large), :id => "cropbox" %>
 <%= form_for @profile do |form| %>
   <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
     <%= form.hidden_field attribute, :id => attribute %>
   <% end %>
-  <p><%= form.submit "Crop" %></p>
+  <%= form.submit "Crop", class:"btn btn-default" %>
 <% end %>
 
 <script>
