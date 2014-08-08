@@ -4,6 +4,21 @@
 	padding-top: 15px;
 }
 
-.profile {
-	img { vertical-align: top; }
+.profile__avatar {
+	vertical-align: top;
+	display: inline-block;
+	width: 200px;
+	.caption {
+		position: absolute;
+		background: rgba(0,0,0,0.75);
+		width: 200px;
+		height: 50px;
+		margin-top: -50px;
+		padding-top: 15px;
+		padding-left: 50px; 
+		a {
+			text-decoration: none;
+			color: #ddd !important;
+		}
+	}
 }

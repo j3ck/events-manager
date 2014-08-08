@@ -1,7 +1,12 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="well profile">
-			<%= image_tag @profile.avatar.url(:small) %>
+			<div class="profile__avatar">
+				<%= image_tag @profile.avatar.url(:small) %>
+				<% if signed_in? && current_user.id == @profile.user.id && current_user.profile.avatar_file_name? %>
+						<p class="caption"><span class="glyphicon glyphicon-resize-full"></span> <%= link_to "Re crop", profile_crp_path(@profile.id) %></p>
+				<% end %>
+			</div>
 			<div class="profile-info">
 				<p><strong class="text-primary">Name: </strong><%= @profile.first_name %> <%= @profile.last_name %></p>
 				<p><strong class="text-primary">Address: </strong><%= @profile.address %></p>
@@ -15,7 +20,6 @@
 			</div>
 			<% if signed_in? && current_user.id == @profile.user.id && current_user.profile.avatar_file_name? %>
 				<p><%= link_to "Update your profile", edit_user_registration_path %></p>
-				<p><%= link_to "Crop", profile_crp_path(@profile.id) %></p>
 			<% end %>
 		</div>
 	</div>
