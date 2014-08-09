@@ -10,62 +10,9 @@
  *
  * Bootswatch
  *= require_self
- *= require amelia/loader
- *= require amelia/bootswatch
  *= require jquery.ui.all
  *= require token-input-facebook
  *= require jquery.datetimepicker
- *= require_tree .
+ *= require jquery.Jcrop
+ *= require_directory ./controllers
  */
-.photo {
-	width: 160px;
-	height: 116px;
-	background-color: #ddd;
-	display: inline-block;
-	vertical-align: top;
-	margin: 5px;
-}
-
-body { padding-top: 70px; padding-bottom: 70px; }
-
-.bg {
-	-webkit-filter: grayscale(0.3) invert(0.3) blur(0.5px);
-	-0-filter: grayscale(0.3) invert(0.3) blur(0.5px);
-	-mox-filter: grayscale(0.3) invert(0.3) blur(0.5px);
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	min-height: 100%;
-	min-width: 1024px;
-	width: 100%;
-	height: auto;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -1;
-}
-
-.home .page-header {
-	border-bottom: none !important;
-	padding: 50px;
-}
-
-.home .page-header h1 {
-	font-size: 4em;
-}
-
-.git-icon {
-	width: 20px;
-	height: 20px;
-}
-
-.footer .navbar-default {
-	background-color: #494747;
-	border-color: #000;
-	opacity: 0.7;
-}
-
-.footer .list-inline {
-	padding-top: 16px;
-}

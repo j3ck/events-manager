@@ -20,4 +20,12 @@ module ApplicationHelper
       yield(tag, classes[index.round])
     end
   end
+
+  def current_theme
+  	if signed_in?
+  		current_user.profile.theme
+  	else
+  		"amelia"
+  	end
+  end
 end
