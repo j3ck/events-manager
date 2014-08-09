@@ -25,7 +25,7 @@ module ApplicationHelper
   	if signed_in?
   		current_user.profile.theme
   	else
-  		"application"
+  		"amelia"
   	end
   end
 end

@@ -3,13 +3,13 @@
 	<ul class="dropdown-menu" aria-labelledby="download">
 		<li>
 			<%= form_for current_user.profile do |f| %>
-				<%= f.hidden_field :theme, value: "application" %>
+				<%= f.hidden_field :theme, value: "amelia" %>
 				<%= f.submit "Default",class:"theme" %>
 			<% end %>
 		</li>
 		<li>
 			<%= form_for current_user.profile do |f| %>
-				<%= f.hidden_field :theme, value: "application-lumen" %>
+				<%= f.hidden_field :theme, value: "lumen" %>
 				<%= f.submit "Lumen",class:"theme" %>
 			<% end %>
 		</li>
