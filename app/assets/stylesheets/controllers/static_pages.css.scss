@@ -54,3 +54,16 @@ body { padding-top: 70px; padding-bottom: 70px; }
 .footer .list-inline {
 	padding-top: 16px;
 }
+
+.theme {
+	border: none;
+	background: none;
+	padding: 5px 10px;
+	width: 100%;
+	text-align: left;
+}
+
+.theme:hover {
+	background: #15b5c1;
+	color: #fff;
+}

@@ -1,0 +1,17 @@
+<li class="dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown" data-placement="bottom" title="Switch style" href="#" id="download"><span class="glyphicon glyphicon-adjust"></span> <span class="caret"></span></a>
+	<ul class="dropdown-menu" aria-labelledby="download">
+		<li>
+			<%= form_for current_user.profile do |f| %>
+				<%= f.hidden_field :theme, value: "application" %>
+				<%= f.submit "Default",class:"theme" %>
+			<% end %>
+		</li>
+		<li>
+			<%= form_for current_user.profile do |f| %>
+				<%= f.hidden_field :theme, value: "application-lumen" %>
+				<%= f.submit "Lumen",class:"theme" %>
+			<% end %>
+		</li>
+	</ul>
+</li>
