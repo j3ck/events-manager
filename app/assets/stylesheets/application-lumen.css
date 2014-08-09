@@ -10,8 +10,8 @@
  *
  * Bootswatch
  *= require_self
- *= require amelia/loader
- *= require amelia/bootswatch
+ *= require lumen/loader
+ *= require lumen/bootswatch
  *= require jquery.ui.all
  *= require token-input-facebook
  *= require jquery.datetimepicker
