@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 // Amelia
 // Bootswatch
 //= require amelia/loader
@@ -21,7 +22,7 @@
 //= require jquery_ujs
 //= require private_pub
 //= require jquery.tokeninput
-//= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require turbolinks
 //= require_tree .
