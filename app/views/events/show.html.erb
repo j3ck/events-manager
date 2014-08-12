@@ -7,8 +7,10 @@
         <%= @event.title %>
         <% if @event.status %>
           <ul class="list-inline pull-right">
-            <li><%= link_to 'Edit', edit_event_path(@event), class:"btn btn-default btn-sm" %></li>
-            <li><%= render "shared/complete_event" %></li>
+            <% if current_user.event_ids.include?(@event.id) %>
+              <li><%= link_to 'Edit', edit_event_path(@event), class:"btn btn-default btn-sm" %></li>
+              <li><%= render "shared/complete_event" %></li>
+            <% end %>
 
             <% if current_user.participations.find_by_event_id(@event.id) %>
               <li><%= render "shared/unfollow" %></li>
