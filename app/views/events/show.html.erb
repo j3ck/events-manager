@@ -106,7 +106,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <div class="photos_cpntainer">
+        <div class="photos_container">
           <ul id="photos" data-update-url="<%= sort_photos_url %>">
             <%= render :partial => "photos/photo", :collection => @event.photos.order("position"), :as => 'photo' %>
           </ul>
