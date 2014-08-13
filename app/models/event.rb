@@ -15,6 +15,9 @@ class Event < ActiveRecord::Base
 	has_many :comments
 	attr_reader :tag_tokens
 
+	has_attached_file :avatar, :styles => { :small => "100x100#", :large => "300x300#" }, :default_url => "/missing.gif"
+	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 	def self.tagged_with(name)
 	  Tag.find_by_name!(name).events
 	end

@@ -23,39 +23,46 @@
         <% end %>
       </h2>
     </div>
+    <div class="event-info">
+      <%= image_tag @event.avatar(:large), class:"img-rounded pull-right" %>
+      <%= form_for (@event), :html => { :multipart => true } do |f| %>
+        <%= f.file_field :avatar %>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
 
-    <dl class="dl-horizontal">
-      <dt class="text-warning">Description</dt>
-      <dd><%= markdown(@event.description) %></dd>
-      <dt class="text-warning">Categories</dt>
-      <dd>
-        <ul class="list-inline">
-          <% @event.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </ul>
-      </dd>
-      <dt class="text-warning">Tags</dt>
-      <dd>
-        <ul class="list-inline">
-          <% @event.tags.each do |tag| %>
-            <li><%= tag.name %></li>
-          <% end %>
-        </ul>
-      </dd>
-      <dt class="text-warning">Time</dt>
-      <dd><%= @event.time %></dd>
-      <dt class="text-warning">Location</dt>
-      <dd>
-        <%= @event.place %>
-        <%= @event.latitude %>
-        <%= @event.longitude %>
-        <a id="showmap">Show on map</a>
-        <div class="map">
-          <%= render 'map', event: @event %>
-        </div>
-      </dd>
-    </dl>
+      <dl class="dl-horizontal">
+        <dt class="text-warning">Description</dt>
+        <dd><%= markdown(@event.description) %></dd>
+        <dt class="text-warning">Categories</dt>
+        <dd>
+          <ul class="list-inline">
+            <% @event.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </ul>
+        </dd>
+        <dt class="text-warning">Tags</dt>
+        <dd>
+          <ul class="list-inline">
+            <% @event.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </ul>
+        </dd>
+        <dt class="text-warning">Time</dt>
+        <dd><%= @event.time %></dd>
+        <dt class="text-warning">Location</dt>
+        <dd>
+          <%= @event.place %>
+          <%= @event.latitude %>
+          <%= @event.longitude %>
+          <a id="showmap">Show on map</a>
+          <div class="map">
+            <%= render 'map', event: @event %>
+          </div>
+        </dd>
+      </dl>
+    </div>
 
 
 <div class="test">
