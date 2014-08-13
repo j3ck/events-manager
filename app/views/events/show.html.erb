@@ -57,6 +57,16 @@
       </dd>
     </dl>
 
+
+<div class="test">
+    <%= form_for (@event.photos.build), :html => { :multipart => true } do |f| %>
+      <%= f.file_field :photo, multiple: true, name: 'photo[photo]' %>
+      <%= f.hidden_field :event_id %>
+      <%= f.submit class:"btn btn-primary" %>
+    <% end %>
+    <script id="template-upload" type="text/x-tmpl"><div class="photo">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+</div>
+
     <div class="panel panel-info">
       <div class="panel-heading">
         <h3 class="panel-title">Photos <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#addPhoto">Add photo</button></h3>
@@ -71,7 +81,7 @@
             <div class="modal-body">
               <%= form_for (@event.photos.build), :html => { :multipart => true } do |f| %>
                 <div class="field">
-                  <%= f.file_field :photo %>
+                  <%= f.file_field :photo, id:"qwe" %>
                 </div>
                 <div class="field">
                   <%= f.hidden_field :event_id %>
