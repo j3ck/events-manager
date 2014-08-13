@@ -19,7 +19,9 @@ gem "paperclip", "~> 4.1"
 gem 'soundcloud'
 gem 'searchkick'
 
+gem 'jquery.fileupload-rails'
 gem 'jquery-turbolinks'
+
 gem 'geocoder'
 gem 'gmaps4rails'
 
