@@ -24,7 +24,7 @@
       </h2>
     </div>
     <div class="event-info">
-      <%= image_tag @event.avatar(:large), class:"img-rounded pull-right" %>
+      <%= image_tag @event.avatar(:large), class:"img-rounded pull-right", width:"200" %>
       <%= form_for (@event), :html => { :multipart => true } do |f| %>
         <%= f.file_field :avatar %>
         <%= f.submit class:"btn btn-primary" %>

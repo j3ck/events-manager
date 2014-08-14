@@ -2,7 +2,7 @@
 	<h3><%= link_to event.title, event %></h3>
   <a class="pull-left" href="<%= event_path(event) %>">
     
-    <%= image_tag event.avatar(:large), class:"media-object" %>
+    <%= image_tag event.avatar(:large), class:"media-object", width:"300" %>
   </a>
   <div class="media-body">
   	<div class="media-heading">
