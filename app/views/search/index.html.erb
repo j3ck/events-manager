@@ -1,0 +1,44 @@
+<h1>Search</h1>
+<%= form_tag search_path, :method => 'get', role:"search" do %>
+		<div class="form-group">
+			<%= hidden_field_tag :section, params[:section], value: params[:section] %>
+			<%= text_field_tag :q, params[:q], value: params[:q], placeholder:"Search" %>
+			<%= submit_tag "Search", name: nil, class:"btn btn-primary" %>
+		</div>
+<% end %>
+<div class="nav">
+	<ul>
+		<li><%= link_to "All", search_path(section: "all", q: params[:q]) %></li>
+		<li><%= link_to "Events", search_path(section: "event", q: params[:q]) %></li>
+		<li><%= link_to "Profiles", search_path(section: "profile", q: params[:q]) %></li>
+		<li><%= link_to "Tags", search_path(section: "tag", q: params[:q]) %></li>
+		<li><%= link_to "Categories", search_path(section: "category", q: params[:q]) %></li>
+	</ul>
+</div>
+
+<% if params[:q].present? %>
+	<% if params[:section] == "all" %>
+		<p>Events: resuls cout: <%= @results[:events].count %></p>
+		<%= render :partial => "search/event", :collection => @results[:events], :as => 'event' %>
+		<p>Profiles: resuls cout: <%= @results[:profiles].count %></p>
+		<%= render :partial => "search/profile", :collection => @results[:profiles], :as => 'profile' %>
+		<p>Tags: resuls cout: <%= @results[:tags].count %></p>
+		<%= render :partial => "search/tag", :collection => @results[:tags], :as => 'tag' %>
+		<p>Categories: resuls cout: <%= @results[:categories].count %></p>
+		<%= render :partial => "search/category", :collection => @results[:categories], :as => 'category' %>
+	<% elsif params[:section] == "event" %>
+		<p>resuls cout: <%= @events.count %></p>
+		<%= render :partial => "search/event", :collection => @events, :as => 'event' %>
+	<% elsif params[:section] == "profile" %>
+		<p>resuls cout: <%= @profiles.count %></p>
+		<%= render :partial => "search/profile", :collection => @profiles, :as => 'profile' %>
+	<% elsif params[:section] == "tag" %>
+		<p>resuls cout: <%= @tags.count %></p>
+		<%= render :partial => "search/tag", :collection => @tags, :as => 'tag' %>
+	<% elsif params[:section] == "category" %>
+		<p>resuls cout: <%= @categories.count %></p>
+		<%= render :partial => "search/category", :collection => @categories, :as => 'category' %>
+	<% end %>
+<% else %>
+	<strong>No results!</strong>
+<% end %>

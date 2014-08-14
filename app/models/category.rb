@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+	searchkick
+
 	has_many :categorizations
 	has_many :events, through: :categorizations
 

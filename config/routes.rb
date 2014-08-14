@@ -2,8 +2,10 @@ EventsManager::Application.routes.draw do
   get 'tags/:tag', to: 'events#index', as: :tag
   resources :playlists
 
+  get 'search' => 'search#index'
+
   resources :tracks
-  get 'search' => 'events#search'
+  #get 'search' => 'events#search'
   get 'search_t' => 'tracks#search'
 
   devise_for :admins
