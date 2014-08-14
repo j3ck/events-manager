@@ -3,7 +3,8 @@ class PhotosController < ApplicationController
 	def create
 		@photo = Photo.create(photo_params)
 		@photo.save
-		redirect_to :back
+		photo_html = render_to_string( :partial => 'photos/photo', :formats => [:html], :locals => { :photo => @photo } )
+		render :json => { :photo_html => photo_html }
 	end
 
 	def destroy

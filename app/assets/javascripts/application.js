@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.turbolinks
+//= require jquery.fileupload
 // Amelia
 // Bootswatch
 //= require amelia/loader

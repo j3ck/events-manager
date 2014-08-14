@@ -23,39 +23,56 @@
         <% end %>
       </h2>
     </div>
+    <div class="event-info">
+      <%= image_tag @event.avatar(:large), class:"img-rounded pull-right", width:"200" %>
+      <%= form_for (@event), :html => { :multipart => true } do |f| %>
+        <%= f.file_field :avatar %>
+        <%= f.submit class:"btn btn-primary" %>
+      <% end %>
 
-    <dl class="dl-horizontal">
-      <dt class="text-warning">Description</dt>
-      <dd><%= markdown(@event.description) %></dd>
-      <dt class="text-warning">Categories</dt>
-      <dd>
-        <ul class="list-inline">
-          <% @event.categories.each do |category| %>
-            <li><%= category.name %></li>
-          <% end %>
-        </ul>
-      </dd>
-      <dt class="text-warning">Tags</dt>
-      <dd>
-        <ul class="list-inline">
-          <% @event.tags.each do |tag| %>
-            <li><%= tag.name %></li>
-          <% end %>
-        </ul>
-      </dd>
-      <dt class="text-warning">Time</dt>
-      <dd><%= @event.time %></dd>
-      <dt class="text-warning">Location</dt>
-      <dd>
-        <%= @event.place %>
-        <%= @event.latitude %>
-        <%= @event.longitude %>
-        <a id="showmap">Show on map</a>
-        <div class="map">
-          <%= render 'map', event: @event %>
-        </div>
-      </dd>
-    </dl>
+      <dl class="dl-horizontal">
+        <dt class="text-warning">Description</dt>
+        <dd><%= markdown(@event.description) %></dd>
+        <dt class="text-warning">Categories</dt>
+        <dd>
+          <ul class="list-inline">
+            <% @event.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </ul>
+        </dd>
+        <dt class="text-warning">Tags</dt>
+        <dd>
+          <ul class="list-inline">
+            <% @event.tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </ul>
+        </dd>
+        <dt class="text-warning">Time</dt>
+        <dd><%= @event.time %></dd>
+        <dt class="text-warning">Location</dt>
+        <dd>
+          <%= @event.place %>
+          <%= @event.latitude %>
+          <%= @event.longitude %>
+          <a id="showmap">Show on map</a>
+          <div class="map">
+            <%= render 'map', event: @event %>
+          </div>
+        </dd>
+      </dl>
+    </div>
+
+
+<div class="test">
+    <%= form_for (@event.photos.build), :html => { :multipart => true } do |f| %>
+      <%= f.file_field :photo, multiple: true, name: 'photo[photo]' %>
+      <%= f.hidden_field :event_id %>
+      <%= f.submit class:"btn btn-primary" %>
+    <% end %>
+    <script id="template-upload" type="text/x-tmpl"><div class="photo">{%=o.name%}<div class="progress"><div class="bar" style="width: 0%"></div></div></div></script>
+</div>
 
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -71,7 +88,7 @@
             <div class="modal-body">
               <%= form_for (@event.photos.build), :html => { :multipart => true } do |f| %>
                 <div class="field">
-                  <%= f.file_field :photo %>
+                  <%= f.file_field :photo, id:"qwe" %>
                 </div>
                 <div class="field">
                   <%= f.hidden_field :event_id %>
@@ -89,7 +106,7 @@
         </div>
       </div>
       <div class="panel-body">
-        <div class="photos_cpntainer">
+        <div class="photos_container">
           <ul id="photos" data-update-url="<%= sort_photos_url %>">
             <%= render :partial => "photos/photo", :collection => @event.photos.order("position"), :as => 'photo' %>
           </ul>
