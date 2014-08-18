@@ -1,6 +1,6 @@
 EventsManager::Application.routes.draw do
   get 'tags/:tag', to: 'events#index', as: :tag
-  resources :playlists
+  resources :playlists, only: [:show]
 
   get 'search' => 'search#index'
 
@@ -14,13 +14,13 @@ EventsManager::Application.routes.draw do
   end
 
   devise_for :users
-  resources :comments
+  resources :comments, except: [:index, :show]
   resources :tags
   resources :events do
     get 'playlist' => 'events#playlist'
   end
-  resources :participations
-  resources :categories
+  resources :participations, only: [:create, :destroy]
+  resources :categories, only: [:index, :show]
   resources :profiles do
     get 'crp' => 'profiles#crp'
   end
