@@ -19,7 +19,7 @@ EventsManager::Application.routes.draw do
   resources :events do
     get 'playlist' => 'events#playlist'
   end
-  resources :participations
+  resources :participations, only: [:create, :destroy]
   resources :categories, only: [:index, :show]
   resources :profiles do
     get 'crp' => 'profiles#crp'
