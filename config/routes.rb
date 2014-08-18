@@ -1,6 +1,6 @@
 EventsManager::Application.routes.draw do
   get 'tags/:tag', to: 'events#index', as: :tag
-  resources :playlists
+  resources :playlists, only: [:show]
 
   get 'search' => 'search#index'
 
