@@ -14,7 +14,7 @@ EventsManager::Application.routes.draw do
   end
 
   devise_for :users
-  resources :comments, exclude: [:index, :show]
+  resources :comments, except: [:index, :show]
   resources :tags
   resources :events do
     get 'playlist' => 'events#playlist'
